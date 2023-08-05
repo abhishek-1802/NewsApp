@@ -14,13 +14,13 @@ async function fetchNews (query) {
    bindData(data.articles);
 } 
 
-function bindData(articles){
+async function bindData(articles){
     const cardsContainer = document.getElementById("cards-container");
     const newsCardTemplate = document.getElementById("template-news-card");
 
     cardsContainer.innerHTML = "";
 
-    articles.forEach((article) =>{
+    await articles.forEach((article) =>{
             if(!article.urlToImage) return;
             const cardClone = newsCardTemplate.content.cloneNode(true);
             fillDataInCard(cardClone, article);
